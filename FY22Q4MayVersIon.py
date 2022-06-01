@@ -168,13 +168,6 @@ if input("Please confirm you want to create %s %s POP File (Y/N)" %
          (pop_period, pop_version)) == "N":
     sys.exit(0)
 
-
-# In[ ]:
-
-
-
-
-
 # In[11]:
 
 
