@@ -1,9 +1,9 @@
 # Prepare data folder
 1. data files
     * Data
-    > **8 Quarter Rolling** *9months*
+    > **the pervious month of the first Quarter + 8 Quarter Rolling** *9months*
     * Data1
-    > **FY16 ~ FY22** *7years*
+    > **the pervious six years of the current year + the current year** *7years*
     * Data2
     > **Q417 ~ Q422** *6quarters*
     * ROIC Data
