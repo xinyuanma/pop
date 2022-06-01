@@ -7,7 +7,7 @@
     * Data2
     > *6quarters:* **Q4s of the pervious 5 years + the Q4 of Actual Current Year**
     * ROIC Data
-    > *24months (Q421~Q323):* **Jun FY21 ~ May FY23**
+    > *24months:* **expand 8 Quarter Rolling**
     * RY Data
     > *61months (the last month of Q417 + Q118~Q422):* **Aug FY17 ~ Aug FY22**
     * Check Data
