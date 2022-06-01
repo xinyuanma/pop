@@ -131,7 +131,7 @@ def confirmversion():
     global first_report_period
     global period_list
     global pop_version
-    (pop_period, first_report_period, period_list) = function.checkperiod()
+    (pop_period, first_report_period, period_list) = checkperiod()
     pop_version = function.checkversion(pop_period)
     if pop_version is None:
         sys.exit(0)
