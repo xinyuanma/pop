@@ -9,7 +9,7 @@
     * ROIC Data
     > *24months:* **expand 8 Quarter Rolling**
     * RY Data
-    > *61months (eg:Aug-17 + Sep-18~Aug-22):* **the last month of +1819202122**
+    > *61months (eg:Aug-17 + Sep-18~Aug-22):* **the last month of + 5 years**
     * Check Data
 2. pc mapping
     > download the latest pc mapping (every monday lease)
