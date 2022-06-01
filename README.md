@@ -5,7 +5,7 @@
     * Data1
     > *7years:* **the pervious 6 years of the Actual Current Year + Actual Current Year**
     * Data2
-    > *6quarters:* **Q4s of th epervious 5 years+ the Q4 of Actual Current Year**
+    > *6quarters:* **Q4s of the pervious 5 years + the Q4 of Actual Current Year**
     * ROIC Data
     > *24months (Q421~Q323):* **Jun FY21 ~ May FY23**
     * RY Data
