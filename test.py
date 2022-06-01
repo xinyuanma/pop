@@ -1,7 +1,9 @@
 import os
-for roots, dirs, files in os.walk(os.getcwd() + r"/Data/POPData"):
-    for file in files:
-        print(file)
-"""        if file[:1] != '~' and file[-5:] == '.xlsx':
-            if ((file[:3] == 'JGP') | (file[:3] == 'ALL')):
-                name = file[:3]"""
+pop_folder_names = []
+for roots, dirs, files in os.walk(
+        r"C:/Users/1243712/OneDrive - Jabil/Desktop/Work/POP 2022"):
+    for dir in dirs:
+        print(dir)
+"""        if dir.rfind('%s' % pop_period) != -1:
+            pop_folder_names.append(dir[14:18])"""
+
