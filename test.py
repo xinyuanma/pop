@@ -1,7 +1,5 @@
 import os
-a =os.getcwd() + r"\Data\POPData"
-print(a)
-for roots, dirs, files in os.walk(os.getcwd() + r"\Data\POPData"):
+for roots, dirs, files in os.walk(os.getcwd() + r"/Data/POPData"):
     for file in files:
         print(file)
 """        if file[:1] != '~' and file[-5:] == '.xlsx':
