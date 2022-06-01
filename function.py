@@ -1,3 +1,5 @@
+import os
+
 ######import_data方法：读取excel数据######
 def import_data(path):
     #####读取excel#####

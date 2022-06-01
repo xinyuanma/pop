@@ -20,6 +20,7 @@ warnings.filterwarnings("ignore")  # 取消警告
 
 ####获取data文件路径#####
 get_path = os.getcwd() + r'\Data'
+
 ####赋值
 (pop_period, first_report_period, period_list) = function.checkperiod()
 pop_version = function.checkversion(pop_period)
