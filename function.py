@@ -81,13 +81,13 @@ def checkversion(pop_period):
 def checkperiod():
     ###### 读取POPData文件夹里面的xlsx的名字（前三个字符）######
     popfilespaths = []
-    for roots, dirs, files in os.walk(os.getcwd() + r"\Data\POPData"):
+    for roots, dirs, files in os.walk(os.getcwd() + r"/Data/POPData"):
         for file in files:
             if file[:1] != '~' and file[-5:] == '.xlsx':
                 if ((file[:3] == 'JGP') | (file[:3] == 'ALL')):
                     name = file[:3]
     ###### 读取上面所选的文件 ######
-    read_data = import_data(get_path + '\\POPData\\%s Data.xlsx' % name)
+    read_data = import_data(get_path + r'/POPData/%s Data.xlsx' % name)
     read_periods = list(read_data['Period'].drop_duplicates(keep='first'))
     ####### period排序 ######
     df = pd.DataFrame(read_periods)
