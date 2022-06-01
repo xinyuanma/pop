@@ -1,6 +1,6 @@
 import os
-
-print(os.getcwd())
+a =os.getcwd() + r"\Data\POPData"
+print(a)
 for roots, dirs, files in os.walk(os.getcwd() + r"\Data\POPData"):
     for file in files:
         print(file)
