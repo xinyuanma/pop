@@ -9,6 +9,7 @@ import warnings
 import os
 import xlwings as xw
 import sys
+import function
 from win32com.client import Dispatch
 warnings.filterwarnings("ignore")  # 取消警告
 
@@ -20,8 +21,9 @@ warnings.filterwarnings("ignore")  # 取消警告
 
 ####获取data文件路径#####
 get_path = os.getcwd() + r'\Data'
-(pop_period, first_report_period, period_list) = checkperiod()
-pop_version = checkversion(pop_period)
+####赋值
+(pop_period, first_report_period, period_list) = function.checkperiod()
+pop_version = function.checkversion(pop_period)
 if pop_version is None:
     sys.exit(0)
 if input("Please confirm you want to create %s %s POP File (Y/N)" %
