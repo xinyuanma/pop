@@ -1,7 +1,7 @@
 # Prepare data folder
 1. data files
     * Data
-    > **Q321 ~ Q323**
+    > **Q321 ~ Q323** *9months*
     * Data1
     > **FY16 ~ FY22** *7years*
     * Data2
