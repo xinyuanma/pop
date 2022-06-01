@@ -1,4 +1,6 @@
 import os
+####获取data文件路径#####
+get_path = os.getcwd() + r'\Data'
 
 ######import_data方法：读取excel数据######
 def import_data(path):
