@@ -6,3 +6,6 @@
     * ROICData
     * RYData
 2. pc mapping
+    > download the latest pc mapping (every monday lease)
+3. LastFiles
+    > check 
