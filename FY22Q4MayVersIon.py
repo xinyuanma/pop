@@ -36,9 +36,7 @@ for roots, dirs, files in os.walk(popdata):
             file_names.append(file[:file.rfind(' Data')])
             file_paths.append(popdata + "//" + file)
 for file_path, file_name in zip(file_paths, file_names):
-    cal_pop(file_path, file_name)
-endtime = datetime.datetime.now()
-print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
+    function.cal_pop(file_path, file_name)
 
 
 
@@ -60,7 +58,7 @@ for o in file_data1paths:
     file_dataRYpaths.append(o.replace("Data1", "DataRY"))
 for file_path1, file_path2, file_pathRY,file_name in zip(file_data1paths, file_data2paths,file_dataRYpaths,
                                              file_names):
-    cal_yearlypop(file_path1, file_path2, file_pathRY,file_name)
+    function.cal_yearlypop(file_path1, file_path2, file_pathRY,file_name)
 
 
 
@@ -181,7 +179,7 @@ try:
                     "Period").PivotItems("FY 2017").Visible = False
                 wb.api.ActiveSheet.PivotTables("PivotTable1").PivotFields(
                     "Period").PivotItems("FY 2022").Visible = True
-        file_name = changename(file_name)
+        file_name = function.changename(file_name)
         wb.sheets['PoP'].activate()
         #Del Account:  Other Profit/(Loss)
         #wb.api.ActiveSheet.PivotTables("PivotTable1").PivotFields(
