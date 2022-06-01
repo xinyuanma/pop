@@ -7,6 +7,7 @@
     > **Q417 ~ Q422**
     * ROIC Data
     * RY Data
+    > **Aug FY17 ~ Aug FY22**
     * Check Data
 2. pc mapping
     > download the latest pc mapping (every monday lease)
