@@ -132,7 +132,7 @@ def confirmversion():
     global period_list
     global pop_version
     (pop_period, first_report_period, period_list) = checkperiod()
-    pop_version = function.checkversion(pop_period)
+    pop_version = checkversion(pop_period)
     if pop_version is None:
         sys.exit(0)
     if input("Please confirm you want to create %s %s POP File (Y/N)" %
