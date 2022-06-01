@@ -3,9 +3,9 @@
     * Data
     > **Q321 ~ Q323**
     * Data1
-    > **FY16 ~ FY22**
+    > **FY16 ~ FY22** *7years*
     * Data2
-    > **Q417 ~ Q422**
+    > **Q417 ~ Q422** *6quarters*
     * ROIC Data
     > **Jun FY21 ~ May FY23** *24months (Q421~Q323)*
     * RY Data
