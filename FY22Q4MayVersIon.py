@@ -11,8 +11,6 @@ import xlwings as xw
 import function
 warnings.filterwarnings("ignore")  # 取消警告
 
-
-
 data_path = os.getcwd() + "/Data"
 PCMapping = pd.read_excel(data_path + "/Profit Center Hierarchy Flattened (MDG).xlsx")
 popdata = data_path + "/POPData"
