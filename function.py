@@ -662,10 +662,10 @@ def cal_yearlypop(path1, path2,pathRY,file_name):
 
 
 
-    
-def processtime(function()):
+
+def processtime(f):
     ####记录开始时间####
     starttime = datetime.datetime.now()
-    function()
+    f()
     endtime = datetime.datetime.now()
     print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
