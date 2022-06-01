@@ -8,7 +8,6 @@ import pandas as pd
 import warnings
 import os
 import xlwings as xw
-import sys
 import function
 warnings.filterwarnings("ignore")  # 取消警告
 
