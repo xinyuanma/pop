@@ -13,13 +13,7 @@ import function
 warnings.filterwarnings("ignore")  # 取消警告
 
 ####赋值
-(pop_period, first_report_period, period_list) = function.checkperiod()
-pop_version = function.checkversion(pop_period)
-if pop_version is None:
-    sys.exit(0)
-if input("Please confirm you want to create %s %s POP File (Y/N)" %
-         (pop_period, pop_version)) == "N":
-    sys.exit(0)
+
 
 data_path = os.getcwd() + "/Data"
 PCMapping = pd.read_excel(data_path + "/Profit Center Hierarchy Flattened (MDG).xlsx")

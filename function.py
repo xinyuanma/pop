@@ -4,6 +4,7 @@ import pandas as pd
 import warnings
 import os
 import xlwings as xw
+import sys
 
 
 warnings.filterwarnings("ignore")  # 取消警告
@@ -15,6 +16,9 @@ PCMapping = pd.read_excel(data_path + "/Profit Center Hierarchy Flattened (MDG).
 popdata = data_path + "/POPData"
 popyearlydata1 = data_path + "/Data1"
 popyearlydata2 = data_path + "/Data2"
+
+
+
 
 
 ######import_data方法：读取excel数据######
@@ -72,6 +76,9 @@ def merge(left, right):
     return result
 
 
+
+
+
 def checkversion(pop_period):
     pop_folder_names = []
     for roots, dirs, files in os.walk(
@@ -117,6 +124,18 @@ def checkperiod():
     period_list = df["period"].tolist()
     #######period_list = period_list + ["Q0 0000"] * (9- len(period_list))#quarters不够的话自动补全 ######
     return (pop_period, first_report_period, period_list)
+
+
+def confirmversion():
+    global pop_period
+    (pop_period, first_report_period, period_list) = function.checkperiod()
+    pop_version = function.checkversion(pop_period)
+    if pop_version is None:
+        sys.exit(0)
+    if input("Please confirm you want to create %s %s POP File (Y/N)" %
+            (pop_period, pop_version)) == "N":
+        sys.exit(0)
+
 
 
 def changename(oldname):
