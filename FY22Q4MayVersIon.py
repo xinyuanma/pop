@@ -10,7 +10,6 @@ import os
 import xlwings as xw
 import sys
 import function
-from win32com.client import Dispatch
 warnings.filterwarnings("ignore")  # 取消警告
 
 
