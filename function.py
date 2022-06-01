@@ -10,6 +10,12 @@ warnings.filterwarnings("ignore")  # 取消警告
 
 ####获取data文件路径#####
 get_path = os.getcwd() + r'/Data'
+data_path = os.getcwd() + r"/Data"
+PCMapping = pd.read_excel(data_path + "/Profit Center Hierarchy Flattened (MDG).xlsx")
+popdata = data_path + "/POPData"
+popyearlydata1 = data_path + "/Data1"
+popyearlydata2 = data_path + "/Data2"
+
 
 ######import_data方法：读取excel数据######
 def import_data(path):
