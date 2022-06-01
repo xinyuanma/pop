@@ -12,15 +12,6 @@ import sys
 import function
 warnings.filterwarnings("ignore")  # 取消警告
 
-
-
-
-
-
-
-
-
-
 ####赋值
 (pop_period, first_report_period, period_list) = function.checkperiod()
 pop_version = function.checkversion(pop_period)
@@ -30,22 +21,11 @@ if input("Please confirm you want to create %s %s POP File (Y/N)" %
          (pop_period, pop_version)) == "N":
     sys.exit(0)
 
-
-
-
-
-
-
-
-data_path = os.getcwd() + "\Data"
-PCMapping = pd.read_excel(data_path + "\Profit Center Hierarchy Flattened (MDG).xlsx")
-popdata = data_path + "\POPData"
-popyearlydata1 = data_path + "\Data1"
-popyearlydata2 = data_path + "\Data2"
-
-
-
-
+data_path = os.getcwd() + "/Data"
+PCMapping = pd.read_excel(data_path + "/Profit Center Hierarchy Flattened (MDG).xlsx")
+popdata = data_path + "/POPData"
+popyearlydata1 = data_path + "/Data1"
+popyearlydata2 = data_path + "/Data2"
 
 #计算POP
 file_names = []
@@ -54,7 +34,7 @@ for roots, dirs, files in os.walk(popdata):
     for file in files:
         if file[-5:] == '.xlsx':
             file_names.append(file[:file.rfind(' Data')])
-            file_paths.append(popdata + "\\" + file)
+            file_paths.append(popdata + "//" + file)
 for file_path, file_name in zip(file_paths, file_names):
     cal_pop(file_path, file_name)
 endtime = datetime.datetime.now()
@@ -73,7 +53,7 @@ for roots, dirs, files in os.walk(popyearlydata1):
     for file in files:
         if file[-5:] == '.xlsx':
             file_names.append(file[:file.rfind(' Data1')])
-            file_data1paths.append(popyearlydata1 + "\\" + file)
+            file_data1paths.append(popyearlydata1 + "//" + file)
 for o in file_data1paths:
     file_data2paths.append(o.replace("Data1", "Data2"))
 for o in file_data1paths:
@@ -87,9 +67,9 @@ for file_path1, file_path2, file_pathRY,file_name in zip(file_data1paths, file_d
 
 
 
-lastfilepath = os.getcwd() + r"\LastFiles"
-pathdata = os.getcwd() + r'\POP\%s.csv'
-pathyearlydata = os.getcwd() + r'\POPYearly\%s-yearly.csv'
+lastfilepath = os.getcwd() + r"/LastFiles"
+pathdata = os.getcwd() + r'/POP/%s.csv'
+pathyearlydata = os.getcwd() + r'/POPYearly/%s-yearly.csv'
 file_names = []
 file_poppaths = []
 file_poppath1s = []
@@ -97,12 +77,12 @@ file_poppath2s = []
 for roots, dirs, files in os.walk(lastfilepath):
     for file in files:
         if file[:1] != '~' and file[-5:] == '.xlsx':
-            file_poppaths.append(lastfilepath + "\\" + file)
+            file_poppaths.append(lastfilepath + "//" + file)
 for i in file_poppaths:
-    file_name = i.split("\\")[-1][:3]
-    file_name = ("JGP" if (i.split("\\")[-1][:7] == 'JABIL G') else "JRI" if
-                 (i.split("\\")[-1][:7] == 'JABIL R') else "JPS" if
-                 (i.split("\\")[-1][:7] == 'JABIL P') else file_name)
+    file_name = i.split("//")[-1][:3]
+    file_name = ("JGP" if (i.split("//")[-1][:7] == 'JABIL G') else "JRI" if
+                 (i.split("//")[-1][:7] == 'JABIL R') else "JPS" if
+                 (i.split("//")[-1][:7] == 'JABIL P') else file_name)
     file_names.append(file_name)
     file_poppath1s.append(pathdata % file_name)
     file_poppath2s.append(pathyearlydata % file_name)
@@ -114,7 +94,7 @@ for i in file_poppaths:
 
 #把结果复制到对应的POP文件
 
-popfilesavepath = os.getcwd() + r"\POPFiles"
+popfilesavepath = os.getcwd() + r"/POPFiles"
 popperiodsort = []
 for i in range(0, 4):
     if int(pop_period[1:2]) + i > 4:
@@ -161,7 +141,7 @@ try:
         wb2.close()
 
         #time.sleep(15)
-        wb1 = app.books.open(os.getcwd()+r"\refreshall.xlsm")
+        wb1 = app.books.open(os.getcwd()+r"/refreshall.xlsm")
         refreshall = wb1.macro('refreshall')
         for Sheet in Sheets:
             wb.sheets[Sheet].activate()
@@ -206,7 +186,7 @@ try:
         #Del Account:  Other Profit/(Loss)
         #wb.api.ActiveSheet.PivotTables("PivotTable1").PivotFields(
         #                "Account").PivotItems(" Other Profit/(Loss)").Visible = False
-        wb.save(popfilesavepath + '\%s POP File_%s.xlsx' %
+        wb.save(popfilesavepath + '/%s POP File_%s.xlsx' %
                 (file_name, current_version))
         wb.close()
         #app.quit()
