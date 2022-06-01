@@ -659,3 +659,13 @@ def cal_yearlypop(path1, path2,pathRY,file_name):
     result_savepath = result_path + r"\%s-yearly.csv" % file_name
     result.to_csv(result_savepath, index=0)
     print("%s Yearly Done!" % file_name)
+
+
+
+    
+def processtime(function()):
+    ####记录开始时间####
+    starttime = datetime.datetime.now()
+    function()
+    endtime = datetime.datetime.now()
+    print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时

@@ -13,23 +13,16 @@ import os
 import xlwings as xw
 import sys
 from win32com.client import Dispatch
-
 warnings.filterwarnings("ignore")  # 取消警告
 
 
-# In[2]:
 
 
-####记录开始时间####
-starttime = datetime.datetime.now()
+
+
+
 ####获取data文件路径#####
 get_path = os.getcwd() + r'\Data'
-
-
-
-# In[10]:
-
-
 (pop_period, first_report_period, period_list) = checkperiod()
 pop_version = checkversion(pop_period)
 if pop_version is None:
@@ -38,46 +31,21 @@ if input("Please confirm you want to create %s %s POP File (Y/N)" %
          (pop_period, pop_version)) == "N":
     sys.exit(0)
 
-# In[11]:
-
-
-
-
-# In[12]:
-
-
-
-
-# In[ ]:
 
 
 
 
 
-# In[13]:
-
-
-
-# In[14]:
-
-
-
-endtime = datetime.datetime.now()
-print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
-
-
-# In[15]:
 
 
 data_path = os.getcwd() + "\Data"
-PCMapping = pd.read_excel(data_path +
-                          "\Profit Center Hierarchy Flattened (MDG).xlsx")
+PCMapping = pd.read_excel(data_path + "\Profit Center Hierarchy Flattened (MDG).xlsx")
 popdata = data_path + "\POPData"
 popyearlydata1 = data_path + "\Data1"
 popyearlydata2 = data_path + "\Data2"
 
 
-# In[16]:
+
 
 
 #计算POP
@@ -94,7 +62,7 @@ endtime = datetime.datetime.now()
 print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
 
 
-# In[17]:
+
 
 
 #计算POP Yearly
@@ -114,11 +82,10 @@ for o in file_data1paths:
 for file_path1, file_path2, file_pathRY,file_name in zip(file_data1paths, file_data2paths,file_dataRYpaths,
                                              file_names):
     cal_yearlypop(file_path1, file_path2, file_pathRY,file_name)
-endtime = datetime.datetime.now()
-print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
 
 
-# In[18]:
+
+
 
 
 lastfilepath = os.getcwd() + r"\LastFiles"
@@ -142,13 +109,8 @@ for i in file_poppaths:
     file_poppath2s.append(pathyearlydata % file_name)
 
 
-# In[ ]:
 
 
-
-
-
-# In[21]:
 
 
 #把结果复制到对应的POP文件
@@ -256,15 +218,6 @@ finally:
     app.quit()
 
 
-# In[22]:
-
-
-endtime = datetime.datetime.now()
-print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
-
-
-# In[ ]:
-
 
 
 
@@ -299,60 +252,11 @@ print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
 
 
 
-# In[135]:
+# In[ ]:
 
 
-def cal_YEARLYAVGROIC(path):
-    split_data = pd.read_excel(path ,header = None)
-    periodColumns = split_data.iloc[8, :].values.tolist()
-    split_data = split_data.drop(split_data.index[:9])
-    period_Months = []
-    for (p) in periodColumns:
-        period_Months.append(p)
-    period_Months[0] = "CUSTOMER"
-    period_Months[1] = "Cost Center"
-    split_data.columns = period_Months
-    split_data = split_data.reset_index(drop=True)
-    period_FY18 = ['CUSTOMER','Cost Center']+periodColumns[2:15]
-    period_FY19 = ['CUSTOMER','Cost Center']+periodColumns[14:27]
-    period_FY20 = ['CUSTOMER','Cost Center']+periodColumns[26:39]
-    period_FY21 = ['CUSTOMER','Cost Center']+periodColumns[38:51]
-    period_FY22 = ['CUSTOMER','Cost Center']+periodColumns[50:63]
-    split_data_AVG = pd.DataFrame()
-    #FY18
-    split_data_AVG_FY18 = split_data[period_FY18]
-    split_data_AVG_FY18['FY 2018'] = (split_data_AVG_FY18[period_FY18[2:]].T.sum())/13
-    split_data_AVG = split_data_AVG.append(split_data_AVG_FY18[['CUSTOMER','Cost Center','FY 2018']], ignore_index=True, sort=False)
-    #FY19
-    split_data_AVG_FY19 = split_data[period_FY19]
-    split_data_AVG_FY19['FY 2019'] = (split_data_AVG_FY19[period_FY19[2:]].T.sum())/13
-    split_data_AVG = split_data_AVG.append(split_data_AVG_FY19[['CUSTOMER','Cost Center','FY 2019']], ignore_index=True, sort=False)
-    #FY20
-    split_data_AVG_FY20 = split_data[period_FY20]
-    split_data_AVG_FY20['FY 2020'] = (split_data_AVG_FY20[period_FY20[2:]].T.sum())/13
-    split_data_AVG = split_data_AVG.append(split_data_AVG_FY20[['CUSTOMER','Cost Center','FY 2020']], ignore_index=True, sort=False)
-    #FY21
-    split_data_AVG_FY21 = split_data[period_FY21]
-    split_data_AVG_FY21['FY 2021'] = (split_data_AVG_FY21[period_FY21[2:]].T.sum())/13
-    split_data_AVG = split_data_AVG.append(split_data_AVG_FY21[['CUSTOMER','Cost Center','FY 2021']], ignore_index=True, sort=False)
-    #FY22
-    split_data_AVG_FY22 = split_data[period_FY22]
-    split_data_AVG_FY22['FY 2022'] = (split_data_AVG_FY22[period_FY22[2:]].T.sum())/13
-    split_data_AVG = split_data_AVG.append(split_data_AVG_FY22[['CUSTOMER','Cost Center','FY 2022']], ignore_index=True, sort=False)
 
-    result = pd.melt(split_data_AVG,id_vars = ["CUSTOMER", "Cost Center"],value_vars=['CUSTOMER','Cost Center','FY 2018','FY 2019','FY 2020','FY 2021','FY 2022'],var_name='Period')
-    a = '8 Quarter (%s)' % (pop_period + " " + pop_version)
-    result['Version'] = [
-        a if o == 'FY 2022' else 'Actual' for o in result.Period.values]
 
-    result = result.rename(columns={'value':'Avg ROIC Total Net Assets (Less Customer Gear)'})
-    result = result[['CUSTOMER', 'Cost Center', 'Version', 'Period', 'Avg ROIC Total Net Assets (Less Customer Gear)']]
-return result
-
-def add_YEARLYAVGROIC(df, df1):
-    result = df.append(df1, ignore_index=True, sort=False)
-    #result.to_csv('yearlyroicadd.csv')
-    return result
 
 
 # In[ ]:
