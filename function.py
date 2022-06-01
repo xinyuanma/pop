@@ -1,6 +1,15 @@
+import datetime
+import numpy as np
+import pandas as pd
+import warnings
 import os
+import xlwings as xw
+
+
+warnings.filterwarnings("ignore")  # 取消警告
+
 ####获取data文件路径#####
-get_path = os.getcwd() + r'\Data'
+get_path = os.getcwd() + r'/Data'
 
 ######import_data方法：读取excel数据######
 def import_data(path):
@@ -60,7 +69,7 @@ def merge(left, right):
 def checkversion(pop_period):
     pop_folder_names = []
     for roots, dirs, files in os.walk(
-            r"C:\Users\1243712\OneDrive - Jabil\Desktop\Work\POP 2022"):
+            r"C:/Users/1243712/OneDrive - Jabil/Desktop/Work/POP 2022"):
         for dir in dirs:
             if dir.rfind('%s' % pop_period) != -1:
                 pop_folder_names.append(dir[14:18])
@@ -628,10 +637,10 @@ def cal_pop(path, file_name):
     if (a[-2] == '2') | (a[-2] == 'd'):
         result = POPData.clear_lockedversion(result)
     result.replace({'Version': '8 Quarter'}, a, inplace=True)
-    result_path = os.getcwd() + r"\POP"
+    result_path = os.getcwd() + r"/POP"
     if not os.path.isdir(result_path):
         os.mkdir(result_path)
-    result_savepath = result_path + r"\%s.csv" % file_name
+    result_savepath = result_path + r"/%s.csv" % file_name
     result.to_csv(result_savepath, index=0)
     print("%s Done!" % file_name)
 
@@ -657,10 +666,10 @@ def cal_yearlypop(path1, path2,pathRY,file_name):
     result['Version'] = [
         a if o == 'FY 2022' else 'Actual' for o in result.Period.values
     ]
-    result_path = os.getcwd() + r"\POPYearly"
+    result_path = os.getcwd() + r"/POPYearly"
     if not os.path.isdir(result_path):
         os.mkdir(result_path)
-    result_savepath = result_path + r"\%s-yearly.csv" % file_name
+    result_savepath = result_path + r"/%s-yearly.csv" % file_name
     result.to_csv(result_savepath, index=0)
     print("%s Yearly Done!" % file_name)
 
