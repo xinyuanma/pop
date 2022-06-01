@@ -7,9 +7,9 @@
     * Data2
     > *6quarters:* **Q4s of the pervious 5 years + the Q4 of Actual Current Year**
     * ROIC Data
-    > *24months:* **expand 8 Quarter Rolling**
+    > *24months:* **all months of 8 Quarter Rolling**
     * RY Data
-    > *61months (eg:Aug-17 + Sep-18~Aug-22):* **the last month of + 5 years**
+    > *61months (eg:Aug-17 + Sep-18~Aug-22):* **one more pervious months + all months of 5 years (start from Actual Current Year)**
     * Check Data
 
 2. pc mapping
