@@ -12,7 +12,6 @@ import sys
 import function
 warnings.filterwarnings("ignore")  # 取消警告
 
-####赋值
 
 
 data_path = os.getcwd() + "/Data"
@@ -20,6 +19,11 @@ PCMapping = pd.read_excel(data_path + "/Profit Center Hierarchy Flattened (MDG).
 popdata = data_path + "/POPData"
 popyearlydata1 = data_path + "/Data1"
 popyearlydata2 = data_path + "/Data2"
+
+function.confirmversion()
+pop_period = function.pop_period
+pop_version = function.pop_version
+period_list = function.period_list
 
 #计算POP
 file_names = []
