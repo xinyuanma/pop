@@ -17,7 +17,15 @@ popdata = data_path + "/POPData"
 popyearlydata1 = data_path + "/Data1"
 popyearlydata2 = data_path + "/Data2"
 
-
+##计时器
+def runtime(func):
+    ####记录开始时间####
+    def warp():
+        starttime = datetime.datetime.now()
+        func()
+        endtime = datetime.datetime.now()
+        print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
+    return warp
 
 
 
@@ -125,7 +133,7 @@ def checkperiod():
     #######period_list = period_list + ["Q0 0000"] * (9- len(period_list))#quarters不够的话自动补全 ######
     return (pop_period, first_report_period, period_list)
 
-
+@runtime
 def confirmversion():
     global pop_period
     global first_report_period
@@ -700,13 +708,3 @@ def cal_yearlypop(path1, path2,pathRY,file_name):
     result_savepath = result_path + r"/%s-yearly.csv" % file_name
     result.to_csv(result_savepath, index=0)
     print("%s Yearly Done!" % file_name)
-
-
-
-
-def processtime(f):
-    ####记录开始时间####
-    starttime = datetime.datetime.now()
-    f()
-    endtime = datetime.datetime.now()
-    print('用时: %d s' % ((endtime - starttime).seconds))  # 程序用时
